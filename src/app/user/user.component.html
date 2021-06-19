@@ -1,0 +1,56 @@
+<div class="mainBlock">
+    <div class="leftBlock">
+        <div class="mb-3">
+            <div class="col-md-12">
+                <label for="validationServer03" class="form-label">Login</label>
+                <input [(ngModel)]="login" name="login" placeholder="Enter login" type="text" class="form-control"
+                    aria-describedby="validationServer03Feedback" required>
+            </div>
+            <div class="col-md-12">
+                <label for="validationServer03" class="form-label">Password</label>
+                <input [(ngModel)]="pass" name="pass" placeholder="Enter password" type="text" class="form-control"
+                    aria-describedby="validationServer03Feedback" required>
+            </div>
+            <div class="col-md-12">
+                <label for="validationServer03" class="form-label">Email adress</label>
+                <input [(ngModel)]="email" name="email" placeholder="Enter email" type="text" class="form-control"
+                    aria-describedby="validationServer03Feedback" required>
+            </div>
+
+            <div class="d-grid gap-2 mt-5">
+                <button *ngIf="!isEdit" (click)="addButton()" class="btn btn-success" type="button">Add user</button>
+                <button *ngIf="isEdit" (click)="saveButton()" class="btn btn-success" type="button">Save edit
+                    user</button>
+            </div>
+        </div>
+    </div>
+    <div class="rightBlock">
+        <div class="header">
+            <div class="hehtag">#</div>
+            <div class="top">Login</div>
+            <div class="top">Password</div>
+            <div class="top">Email</div>
+            <div class="top edit">Edit</div>
+            <div class="top">Delete</div>
+        </div>
+        <ol>
+            <li *ngFor="let user of arrUsers; let i=index">
+                <div class="header">
+                    <div class="hehtag"></div>
+                    <div class="top login">{{user.login}}</div>
+                    <div class="top password">{{user.password}}</div>
+                    <div class="top email">{{user.email}}</div>
+                    <div class="top">
+                        <button (click)="editBtn(i)" type="button" class="btn btn-warning">edit</button>
+                    </div>
+                    <div class="top">
+                        <button [disabled]="isEdit" (click)="deleteBtn(i)" type="button"
+                            class="btn btn-danger">delete</button>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<!-- ng build --prod --base-href "https://it-academy-frontend.github.io/userList/" -->
